@@ -10,22 +10,13 @@ public class Binary {
     }
 
     public static List<Integer> rearrange(List<Integer> elements) {
-
+Collections.sort(elements);
         int [][]forSort = new int[2][elements.size()];
-
         for (int i = 0; i < elements.size(); i++){
             forSort[0][i] = elements.get(i);
             forSort[1][i] = convertToBinary(forSort[0][i]);
        }
-        Arrays.sort(forSort[0]);
-        for (int i = 0; i < elements.size(); i++){
-
-            forSort[1][i] = convertToBinary(forSort[0][i]);
-        }
-
-       System.out.println("before sort " + arrayToList(forSort[1]));
-        System.out.println("before sort " + arrayToList(forSort[0]));
-
+       
         bubble_srt(forSort[1], forSort[0]);
         System.out.println("after sort " + arrayToList(forSort[1]));
         System.out.println("after sort " + arrayToList(forSort[0]));
