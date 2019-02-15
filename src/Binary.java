@@ -1,5 +1,5 @@
-import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class Binary {
@@ -10,21 +10,12 @@ public class Binary {
     }
 
     public static List<Integer> rearrange(List<Integer> elements) {
-
+        Collections.sort(elements);
         int [][]forSort = new int[2][elements.size()];
-
         for (int i = 0; i < elements.size(); i++){
             forSort[0][i] = elements.get(i);
             forSort[1][i] = convertToBinary(forSort[0][i]);
        }
-        Arrays.sort(forSort[0]);
-        for (int i = 0; i < elements.size(); i++){
-
-            forSort[1][i] = convertToBinary(forSort[0][i]);
-        }
-
-       System.out.println("before sort " + arrayToList(forSort[1]));
-        System.out.println("before sort " + arrayToList(forSort[0]));
 
         bubble_srt(forSort[1], forSort[0]);
         System.out.println("after sort " + arrayToList(forSort[1]));
@@ -45,12 +36,7 @@ public class Binary {
 }
 
  public static List<Integer> arrayToList (int[] ints){
-        List<Integer> intList = new ArrayList<>();
-        for (int i : ints)
-        {
-            intList.add(i);
-        }
-        return intList;
+        return Arrays.asList(Arrays.stream(ints).boxed().toArray( Integer[]::new ));
     }
 
 
